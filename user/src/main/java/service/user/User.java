@@ -17,7 +17,7 @@ public class User {
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @GeneratedValue(generator = "idGenerator")
-    @Column(name = "uid", nullable = false)
+    @Column(name = "uid", nullable = false, length = 128)
     private String uid;
 
     @Column(name = "name", nullable = false, length = 64)
@@ -35,10 +35,6 @@ public class User {
 
     public String getUid() {
         return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
     public String getName() {
