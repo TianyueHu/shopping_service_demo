@@ -1,18 +1,21 @@
 package service.order;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 /**
  * @author Zheting Hu
  * @date 2019-10-02
  */
+
+@Entity
+@Table(name = "order")
+@DynamicUpdate
+@DynamicInsert
 public class Order {
 
     @Id

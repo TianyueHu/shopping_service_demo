@@ -1,0 +1,18 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: shoppingcart-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservice_demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

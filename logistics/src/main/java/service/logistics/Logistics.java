@@ -1,17 +1,22 @@
 package service.logistics;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * @author Zheting Hu
  * @date 2019-10-02
  */
+
+@Entity
+@Table(name = "logistics")
+@DynamicUpdate
+@DynamicInsert
 public class Logistics {
 
     @Id
