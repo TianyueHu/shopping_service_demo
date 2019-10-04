@@ -38,8 +38,8 @@ public class Product {
     private int inventory;
 
     @UpdateTimestamp
-    @Column(name = "updateTimeStamp")
-    private Timestamp updateTimeStamp;
+    @Column(name = "updateTimestamp")
+    private Timestamp updateTimestamp;
 
     public String getPid(){
         return pid;
@@ -77,11 +77,11 @@ public class Product {
         this.inventory = inventory;
     }
 
-    public Timestamp getUpdateTimeStamp() {
-        return updateTimeStamp;
+    public Timestamp getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
-    public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-        this.updateTimeStamp = updateTimeStamp;
+    public void setUpdateTimestamp(Timestamp updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 }

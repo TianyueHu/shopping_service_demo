@@ -13,10 +13,10 @@ import java.sql.Timestamp;
  */
 
 @Entity
-@Table(name = "order")
+@Table(name = "orderinfo")
 @DynamicUpdate
 @DynamicInsert
-public class Order {
+public class OrderInfo {
 
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
@@ -33,12 +33,15 @@ public class Order {
     @Column(name = "unitPrice", nullable = false)
     private long unitPrice;
 
+    @Column(name = "num", nullable = false)
+    private long num;
+
     @Column(name = "totalPrices", nullable = false)
     private long totalPrices;
 
     @CreationTimestamp
-    @Column(name = "timestamp")
-    private Timestamp timestamp;
+    @Column(name = "createTimestamp")
+    private Timestamp createTimestamp;
 
     public String getOid() {
         return oid;
@@ -76,11 +79,19 @@ public class Order {
         this.totalPrices = totalPrices;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Timestamp getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setCreateTimestamp(Timestamp createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
+    public long getNum() {
+        return num;
+    }
+
+    public void setNum(long num) {
+        this.num = num;
     }
 }

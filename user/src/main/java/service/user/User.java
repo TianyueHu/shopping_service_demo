@@ -30,8 +30,8 @@ public class User {
     private long balance;
 
     @UpdateTimestamp
-    @Column(name = "updateTimeStamp")
-    private Timestamp updateTimeStamp;
+    @Column(name = "updateTimestamp")
+    private Timestamp updateTimestamp;
 
     public String getUid() {
         return uid;
@@ -61,11 +61,11 @@ public class User {
         this.balance = balance;
     }
 
-    public Timestamp getUpdateTimeStamp() {
-        return updateTimeStamp;
+    public Timestamp getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
-    public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-        this.updateTimeStamp = updateTimeStamp;
+    public void setUpdateTimestamp(Timestamp updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 }

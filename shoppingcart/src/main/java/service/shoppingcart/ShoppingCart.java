@@ -38,8 +38,8 @@ public class ShoppingCart {
     private long num;
 
     @UpdateTimestamp
-    @Column(name = "updateTimeStamp")
-    private Timestamp updateTimeStamp;
+    @Column(name = "updateTimestamp")
+    private Timestamp updateTimestamp;
 
     public String getSid() {
         return sid;
@@ -77,11 +77,11 @@ public class ShoppingCart {
         this.num = num;
     }
 
-    public Timestamp getUpdateTimeStamp() {
-        return updateTimeStamp;
+    public Timestamp getUpdateTimestamp() {
+        return updateTimestamp;
     }
 
-    public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-        this.updateTimeStamp = updateTimeStamp;
+    public void setUpdateTimestamp(Timestamp updateTimestamp) {
+        this.updateTimestamp = updateTimestamp;
     }
 }

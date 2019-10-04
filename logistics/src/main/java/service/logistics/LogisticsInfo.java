@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 @Table(name = "logistics")
 @DynamicUpdate
 @DynamicInsert
-public class Logistics {
+public class LogisticsInfo {
 
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
@@ -35,8 +35,8 @@ public class Logistics {
     private String status;
 
     @UpdateTimestamp
-    @Column(name = "updateTimeStamp")
-    private Timestamp updateTimestamp;
+    @Column(name = "createTimeStamp")
+    private Timestamp createTimestamp;
 
     public String getLid() {
         return lid;
@@ -66,11 +66,11 @@ public class Logistics {
         this.status = status;
     }
 
-    public Timestamp getUpdateTimestamp() {
-        return updateTimestamp;
+    public Timestamp getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setUpdateTimestamp(Timestamp updateTimestamp) {
-        this.updateTimestamp = updateTimestamp;
+    public void setCreateTimestamp(Timestamp createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 }
