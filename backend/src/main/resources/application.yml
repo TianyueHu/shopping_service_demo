@@ -1,0 +1,10 @@
+server:
+  port: 8088
+spring:
+  dubbo:
+    application:
+      name: backend
+    registry:
+      address: zookeeper://localhost
+      port: 2181
+    scan: com.springboot.dubbo.test.controller

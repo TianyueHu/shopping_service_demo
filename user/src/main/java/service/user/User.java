@@ -29,6 +29,9 @@ public class User {
     @Column(name = "balance", nullable = false)
     private long balance;
 
+    @Column(name = "address", length = 64)
+    private String address;
+
     @UpdateTimestamp
     @Column(name = "updateTimestamp")
     private Timestamp updateTimestamp;
@@ -51,6 +54,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public String getAddress(){
+        return address;
     }
 
     public long getBalance() {

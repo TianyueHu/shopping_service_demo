@@ -30,11 +30,11 @@ public class OrderInfo {
     @Column(name = "pid", nullable = false, length = 128)
     private String pid;
 
-    @Column(name = "unitPrice", nullable = false)
-    private long unitPrice;
-
     @Column(name = "num", nullable = false)
     private long num;
+
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @Column(name = "totalPrices", nullable = false)
     private long totalPrices;
@@ -63,14 +63,6 @@ public class OrderInfo {
         this.pid = pid;
     }
 
-    public long getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(long unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     public long getTotalPrices() {
         return totalPrices;
     }
@@ -93,5 +85,13 @@ public class OrderInfo {
 
     public void setNum(long num) {
         this.num = num;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus(){
+        return status;
     }
 }

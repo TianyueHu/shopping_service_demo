@@ -28,9 +28,6 @@ public class LogisticsInfo {
     @Column(name = "oid", nullable = false, length = 128)
     private String oid;
 
-    @Column(name = "address", nullable = false, length = 128)
-    private String address;
-
     @Column(name = "status", nullable = false, length = 32)
     private String status;
 
@@ -48,14 +45,6 @@ public class LogisticsInfo {
 
     public void setOid(String oid) {
         this.oid = oid;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getStatus() {

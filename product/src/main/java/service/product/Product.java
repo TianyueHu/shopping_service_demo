@@ -84,4 +84,5 @@ public class Product {
     public void setUpdateTimestamp(Timestamp updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
     }
+
 }
