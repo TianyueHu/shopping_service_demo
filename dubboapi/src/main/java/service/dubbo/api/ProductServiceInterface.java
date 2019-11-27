@@ -19,7 +19,6 @@ public interface ProductServiceInterface {
 
     public boolean replenishStock(String pid, int num);
 
-
-    //public void getProduct(String pid);
+    //public Product getProduct(String pid);
 
 }

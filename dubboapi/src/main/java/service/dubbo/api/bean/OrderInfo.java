@@ -19,7 +19,7 @@ public class OrderInfo {
 
     private String status;
 
-    private long totalPrices;
+    private long totalPrice;
 
     private Timestamp createTimestamp;
 
@@ -28,14 +28,14 @@ public class OrderInfo {
     }
 
     public OrderInfo(String oid, String uid, String pid, long num, String status,
-                     long totalPrices, Timestamp createTimestamp){
+                     long totalPrice, Timestamp createTimestamp){
         this.oid = oid;
         this.num = num;
         this.uid = uid;
         this.pid = pid;
         this.status = status;
         this.createTimestamp = createTimestamp;
-        this.totalPrices = totalPrices;
+        this.totalPrice = totalPrice;
     }
 
     public void setOid(String oid){
@@ -62,12 +62,12 @@ public class OrderInfo {
         this.pid = pid;
     }
 
-    public long getTotalPrices() {
-        return totalPrices;
+    public long getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalPrices(long totalPrices) {
-        this.totalPrices = totalPrices;
+    public void setTotalPrice(long totalPrices) {
+        this.totalPrice = totalPrices;
     }
 
     public Timestamp getCreateTimestamp() {

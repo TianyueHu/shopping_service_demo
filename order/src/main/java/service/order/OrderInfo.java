@@ -36,8 +36,8 @@ public class OrderInfo {
     @Column(name = "status", nullable = false)
     private String status;
 
-    @Column(name = "totalPrices", nullable = false)
-    private long totalPrices;
+    @Column(name = "totalPrice", nullable = false)
+    private long totalPrice;
 
     @CreationTimestamp
     @Column(name = "createTimestamp")
@@ -63,12 +63,12 @@ public class OrderInfo {
         this.pid = pid;
     }
 
-    public long getTotalPrices() {
-        return totalPrices;
+    public long getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalPrices(long totalPrices) {
-        this.totalPrices = totalPrices;
+    public void setTotalPrice(long totalPrices) {
+        this.totalPrice = totalPrices;
     }
 
     public Timestamp getCreateTimestamp() {

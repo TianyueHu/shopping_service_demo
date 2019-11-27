@@ -25,3 +25,4 @@ embedded:
 collector:
   host: localhost
   port: 10058
+debug: true

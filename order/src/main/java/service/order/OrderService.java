@@ -35,7 +35,7 @@ public class OrderService implements OrderServiceInterface {
         order.setUid(uid);
         order.setPid(pid);
         order.setNum(num);
-        order.setTotalPrices(totalPrices);
+        order.setTotalPrice(totalPrices);
         order.setStatus("NEW");
         return dao.save(order).getOid();
     }
@@ -60,7 +60,7 @@ public class OrderService implements OrderServiceInterface {
         OrderInfo order = dao.findByOid(oid);
         service.dubbo.api.bean.OrderInfo info = new service.dubbo.api.bean.OrderInfo(
                 order.getOid(), order.getUid(), order.getPid(), order.getNum(),
-                order.getStatus(),order.getTotalPrices(), order.getCreateTimestamp());
+                order.getStatus(), order.getTotalPrice(), order.getCreateTimestamp());
         return info;
     }
 }

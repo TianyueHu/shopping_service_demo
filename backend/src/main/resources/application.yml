@@ -1,10 +1,16 @@
+collector:
+  host: 127.0.0.1
+  port: 10058
+
 server:
-  port: 8088
-spring:
-  dubbo:
-    application:
-      name: backend
-    registry:
-      address: zookeeper://localhost
-      port: 2181
-    scan: com.springboot.dubbo.test.controller
+  port: 10078
+embedded:
+  zookeeper:
+    port: 2181
+
+dubbo:
+  application:
+    name: backend
+  registry:
+    address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+debug: true

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<Configuration status="WARN">
-    <Appenders>
+<configuration monitorInterval="120">
+    <appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-    </Appenders>
-    <Loggers>
-        <AsyncRoot level="info">
-            <AppenderRef ref="Console"/>
-        </AsyncRoot>
-    </Loggers>
-</Configuration>
+    </appenders>
+
+    <loggers>
+        <asyncRoot level="info">
+            <!--根据配置文件是否打开 console输出 -->
+            <appender-ref ref="Console"/>
+        </asyncRoot>
+    </loggers>
+</configuration>
