@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import service.dubbo.api.UserServiceInterface;
 
-@Service(version = "1.0.0")
+@Service()
 public class UserService implements UserServiceInterface {
 
     @Autowired
@@ -30,7 +30,7 @@ public class UserService implements UserServiceInterface {
 
     @Override
     @Transactional
-    public boolean checkAndDeductBalance(String uid, long balance) {
+    public String checkAndDeductBalance(String uid, long balance) {
         User user = userDao.findByUid(uid);
         if(balance < 0){
             throw new RuntimeException("The amount can't be negative");
@@ -40,7 +40,7 @@ public class UserService implements UserServiceInterface {
         }
         user.setBalance(user.getBalance() - balance);
         userDao.save(user);
-        return true;
+        return user.getAddress();
     }
 
     @Transactional

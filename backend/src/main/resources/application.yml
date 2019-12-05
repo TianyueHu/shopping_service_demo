@@ -1,3 +1,7 @@
+spring:
+  application:
+    name: backend
+
 collector:
   host: 127.0.0.1
   port: 10058
@@ -9,8 +13,13 @@ embedded:
     port: 2181
 
 dubbo:
+  protocol:
+    name: dubbo
+    port: 10088
   application:
     name: backend
-  registry:
-    address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+#  registry:
+#    address: zookeeper://127.0.0.1:2181
+#    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+
 debug: true

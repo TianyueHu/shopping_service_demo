@@ -8,6 +8,6 @@ public interface LogisticsServiceInterface {
 
     public String newLogistics(String oid);
 
-    public boolean updateLogisticsStatus(String lid, String status);
+    public String updateLogisticsStatus(String oid, String status);
 
 }

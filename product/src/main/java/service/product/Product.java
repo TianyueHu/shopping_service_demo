@@ -35,7 +35,7 @@ public class Product {
     private long unitPrice;
 
     @Column(name = "inventory", nullable = false)
-    private int inventory;
+    private long inventory;
 
     @UpdateTimestamp
     @Column(name = "updateTimestamp")
@@ -69,11 +69,11 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public int getInventory() {
+    public long getInventory() {
         return inventory;
     }
 
-    public void setInventory(int inventory) {
+    public void setInventory(long inventory) {
         this.inventory = inventory;
     }
 

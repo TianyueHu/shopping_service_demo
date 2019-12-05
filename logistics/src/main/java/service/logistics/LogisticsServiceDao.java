@@ -12,5 +12,5 @@ public interface LogisticsServiceDao extends JpaRepository<LogisticsInfo, String
 
     LogisticsInfo findByLid(String Lid);
 
-    List<LogisticsInfo> findByOid(String Oid);
+    LogisticsInfo findByOid(String Oid);
 }

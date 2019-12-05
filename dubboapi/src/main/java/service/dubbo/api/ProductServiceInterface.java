@@ -17,7 +17,7 @@ public interface ProductServiceInterface {
 
     public boolean checkAndDetuctInventory(String pid, int num);
 
-    public boolean replenishStock(String pid, int num);
+    public boolean replenishStock(String pid, long num);
 
     //public Product getProduct(String pid);
 

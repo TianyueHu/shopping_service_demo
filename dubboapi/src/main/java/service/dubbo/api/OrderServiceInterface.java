@@ -13,9 +13,11 @@ public interface OrderServiceInterface {
      */
     public String newOrder(String uid, String pid, long num, long totalPrices);
 
-    public boolean orderCancel(String oid);
+    public service.dubbo.api.bean.OrderInfo orderCancel(String oid);
 
     public boolean updateOrderStatus(String oid, String status);
 
     OrderInfo getOrder(String oid);
+
+    boolean deleteOrder(String oid);
 }

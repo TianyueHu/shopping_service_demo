@@ -12,4 +12,6 @@ public interface OrderDao extends JpaRepository<OrderInfo, String> {
     OrderInfo findByOid(String oid);
 
     List<OrderInfo> findByUid(String uid);
+
+    void deleteByOid(String oid);
 }

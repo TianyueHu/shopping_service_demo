@@ -61,7 +61,7 @@ public class ProductService implements ProductServiceInterface {
 
     @Override
     @Transactional
-    public boolean replenishStock(String pid, int num) {
+    public boolean replenishStock(String pid, long num) {
         Product product = dao.findByPid(pid);
         if (num > 0 && product.getInventory() + num > 0){
             product.setInventory(product.getInventory() + num);

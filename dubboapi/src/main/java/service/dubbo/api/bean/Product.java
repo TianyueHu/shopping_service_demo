@@ -17,7 +17,7 @@ public class Product {
 
     private long unitPrice;
 
-    private int inventory;
+    private long inventory;
 
     private Timestamp updateTimestamp;
 
@@ -25,7 +25,7 @@ public class Product {
 
     }
 
-    public Product(String pid, String pName, String description, long unitPrice, int inventory, Timestamp updateTimestamp){
+    public Product(String pid, String pName, String description, long unitPrice, long inventory, Timestamp updateTimestamp){
         this.pid = pid;
         this.pName = pName;
         this.description = description;
@@ -66,11 +66,11 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public int getInventory() {
+    public long getInventory() {
         return inventory;
     }
 
-    public void setInventory(int inventory) {
+    public void setInventory(long inventory) {
         this.inventory = inventory;
     }
 

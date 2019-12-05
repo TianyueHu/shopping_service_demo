@@ -27,7 +27,8 @@ public class OrderInfo {
 
     }
 
-    public OrderInfo(String oid, String uid, String pid, long num, String status,
+    public OrderInfo(String oid, String uid, String pid,
+                     long num, String status,
                      long totalPrice, Timestamp createTimestamp){
         this.oid = oid;
         this.num = num;

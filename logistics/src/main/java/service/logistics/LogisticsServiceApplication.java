@@ -17,12 +17,13 @@ import service.dubbo.api.zookeeper.EmbeddedZooKeeper;
 public class LogisticsServiceApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(LogisticsServiceApplication.class)
-                .listeners((ApplicationListener<ApplicationEnvironmentPreparedEvent>) event -> {
-                    Environment environment = event.getEnvironment();
-                    int port = environment.getProperty("embedded.zookeeper.port", int.class);
-                    new EmbeddedZooKeeper(port, false).start();
-                })
-                .run(args);
+//        new SpringApplicationBuilder(LogisticsServiceApplication.class)
+//                .listeners((ApplicationListener<ApplicationEnvironmentPreparedEvent>) event -> {
+//                    Environment environment = event.getEnvironment();
+//                    int port = environment.getProperty("embedded.zookeeper.port", int.class);
+//                    new EmbeddedZooKeeper(port, false).start();
+//                })
+//                .run(args);
+        SpringApplication.run(LogisticsServiceApplication.class);
     }
 }

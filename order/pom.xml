@@ -71,6 +71,10 @@
             <groupId>personal</groupId>
             <artifactId>rm</artifactId>
         </dependency>
+        <dependency>
+            <groupId>personal</groupId>
+            <artifactId>interceptor</artifactId>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

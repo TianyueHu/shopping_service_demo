@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Import;
  * @author Zheting Hu
  * @date 2019-11-27
  */
-@Import(RMConfig.class)
+
 @Configuration
+//@Import(RMConfig.class)
 public class Config {
 }

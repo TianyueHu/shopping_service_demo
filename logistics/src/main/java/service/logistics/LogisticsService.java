@@ -2,6 +2,7 @@ package service.logistics;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import service.dubbo.api.LogisticsServiceInterface;
 
 import java.util.List;
@@ -21,11 +22,8 @@ public class LogisticsService implements LogisticsServiceInterface {
         return dao.save(logistics);
     }
 
-    public List<LogisticsInfo> getAllLogisticsByUid(String oid){
-        return dao.findByOid(oid);
-    }
-
     @Override
+    @Transactional
     public String newLogistics(String oid) {
         LogisticsInfo info = new LogisticsInfo();
         info.setOid(oid);
@@ -35,10 +33,12 @@ public class LogisticsService implements LogisticsServiceInterface {
     }
 
     @Override
-    public boolean updateLogisticsStatus(String lid, String status) {
-        LogisticsInfo info = dao.findByLid(lid);
+    @Transactional
+    public String updateLogisticsStatus(String oid, String status) {
+        LogisticsInfo info = dao.findByOid(oid);
+        String origin = info.getStatus();
         info.setStatus(status);
         dao.save(info);
-        return true;
+        return origin;
     }
 }
