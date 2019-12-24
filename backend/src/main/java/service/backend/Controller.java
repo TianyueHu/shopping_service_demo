@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import service.dubbo.api.*;
 import service.dubbo.api.bean.Product;
+import service.dubbo.api.bean.User;
 
 import java.util.List;
 
@@ -21,13 +22,13 @@ public class Controller {
 
     private Logger LOG = LoggerFactory.getLogger(Controller.class);
 
-    @Reference(url = "dubbo://127.0.0.1:10085", application = "logistics-service")
+    @Reference(timeout = 10000, url = "dubbo://127.0.0.1:10085", application = "logistics-service")
     private LogisticsServiceInterface logisticsServiceInterface;
-    @Reference(url = "dubbo://127.0.0.1:10084", application = "order-service")
+    @Reference(timeout = 10000, url = "dubbo://127.0.0.1:10084", application = "order-service")
     private OrderServiceInterface orderServiceInterface;
-    @Reference(url = "dubbo://127.0.0.1:10081", application = "user-service")
+    @Reference(timeout = 10000, url = "dubbo://127.0.0.1:10081", application = "user-service")
     private UserServiceInterface userServiceInterface;
-    @Reference(url = "dubbo://127.0.0.1:10083", application = "product-service")
+    @Reference(timeout = 10000, url = "dubbo://127.0.0.1:10083", application = "product-service")
     private ProductServiceInterface productServiceInterface;
 
     @GetMapping("/register")
@@ -45,6 +46,24 @@ public class Controller {
         return userServiceInterface.deposit(uid, num);
     }
 
+    @GetMapping("/getUser")
+    @GlobalTransaction
+    public User getUser(@RequestParam("uid") String uid){
+        return userServiceInterface.getUser(uid);
+    }
+
+    @GetMapping("/deleteUser")
+    @GlobalTransaction
+    public boolean deleteUser(@RequestParam("uid") String uid){
+        return userServiceInterface.deleteUser(uid);
+    }
+
+    @PostMapping("/newProduct")
+    @GlobalTransaction
+    public String newProduct(@RequestBody Product product){
+        return productServiceInterface.newProduct(product);
+    }
+
     //查看所有商品
     @GetMapping("/getAllProduct")
     @GlobalTransaction
@@ -55,42 +74,55 @@ public class Controller {
     //补充库存
     @GetMapping("/replenishStock")
     @GlobalTransaction
-    public void replenishStock(@RequestParam("uid")String pid, @RequestParam("num")int num){
+    public void replenishStock(@RequestParam("pid")String pid, @RequestParam("num")int num){
         productServiceInterface.replenishStock(pid, num);
     }
 
     //生成订单
-    @PostMapping("/generateOrder")
+    @GetMapping("/generateOrder")
     @GlobalTransaction
-    public String generateOrder(@RequestParam("uid")String uid,@RequestParam("num")int num, @RequestBody Product product){
+    public String generateOrder(@RequestParam("uid")String uid,
+                                @RequestParam("num")int num,
+                                @RequestParam("pid")String pid,
+                                @RequestParam("test")String testController){
         //检查商品库存并扣除
         //扣除用户余额
         //创建订单信息
         //初始化物流信息
         String oid = "";
-        boolean enoughStock = productServiceInterface.checkAndDetuctInventory(product.getPid(), num);
+        long unitPrice = productServiceInterface.getProduct(pid).getUnitPrice();
+        productServiceInterface.checkAndDetuctInventory(pid, num);
         try {
-            long totalPrice = num * product.getUnitPrice();
-
+            if(testController != null && testController.equals("test2")){
+                Thread.sleep(15*1000);
+                throw new Exception();
+            }
+            long totalPrice = num * unitPrice;
             String address = userServiceInterface.checkAndDeductBalance(uid, totalPrice);
             try{
-                oid = orderServiceInterface.newOrder(uid, product.getPid(), num, totalPrice);
+
+                if(testController != null && testController.equals("test1")){
+                    Thread.sleep(15*1000);
+                    throw new Exception();
+                }
+
+                oid = orderServiceInterface.newOrder(uid, pid, num, totalPrice);
                 try{
                     logisticsServiceInterface.newLogistics(oid);
                 }
                 catch (Exception e){
                     userServiceInterface.deposit(uid, totalPrice);
-                    productServiceInterface.replenishStock(product.getPid(), num);
+                    productServiceInterface.replenishStock(pid, num);
                     orderServiceInterface.deleteOrder(oid);
                 }
             }
             catch (Exception e){
                 userServiceInterface.deposit(uid, totalPrice);
-                productServiceInterface.replenishStock(product.getPid(), num);
+                productServiceInterface.replenishStock(pid, num);
             }
         }
         catch (Exception e){
-            productServiceInterface.replenishStock(product.getPid(), num);
+            productServiceInterface.replenishStock(pid, num);
         }
 
         return oid;
@@ -132,9 +164,15 @@ public class Controller {
 
     @GlobalTransaction
     @GetMapping("/updateLogistics")
-    public void updateLogistics(String oid, String status){
+    public void updateLogistics(@RequestParam("oid") String oid,
+                                @RequestParam("status") String status,
+                                @RequestParam("test") String testController){
         String origin = logisticsServiceInterface.updateLogisticsStatus(oid, status);
         try{
+            if(testController.equals("test3")){
+                Thread.sleep(15 * 1000);
+                throw new Exception();
+            }
             orderServiceInterface.updateOrderStatus(oid, status);
         }
         catch (Exception e){

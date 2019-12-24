@@ -1,13 +1,16 @@
 package service.dubbo.api.bean;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * @author Zheting Hu
  * @date 2019-10-02
  */
-public class LogisticsInfo {
+public class LogisticsInfo implements Serializable {
+
+    private static final long serialVersionUID = 4567896989L;
 
     private String lid;
 

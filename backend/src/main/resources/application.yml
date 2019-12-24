@@ -3,7 +3,7 @@ spring:
     name: backend
 
 collector:
-  host: 127.0.0.1
+  host: localhost
   port: 10058
 
 server:
@@ -18,6 +18,11 @@ dubbo:
     port: 10088
   application:
     name: backend
+  consumer:
+    check: false
+    filter: consumerFilter
+  provider:
+    filter: providerFilter
 #  registry:
 #    address: zookeeper://127.0.0.1:2181
 #    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache

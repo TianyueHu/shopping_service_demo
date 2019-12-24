@@ -5,12 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import service.dubbo.api.UserServiceInterface;
 
-@Service()
+@Service
 public class UserService implements UserServiceInterface {
 
     @Autowired
     private UserDao userDao;
-
 
     @Override
     @Transactional
@@ -41,6 +40,13 @@ public class UserService implements UserServiceInterface {
         user.setBalance(user.getBalance() - balance);
         userDao.save(user);
         return user.getAddress();
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteUser(String uid) {
+        userDao.deleteByUid(uid);
+        return true;
     }
 
     @Transactional

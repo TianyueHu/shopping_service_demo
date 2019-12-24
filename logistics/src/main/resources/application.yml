@@ -26,6 +26,10 @@ dubbo:
     port: 10085
   registry:
     address: N/A
+  consumer:
+    filter: consumerFilter
+  provider:
+    filter: providerFilter
 #    address: zookeeper://127.0.0.1:2181
 embedded:
   zookeeper:

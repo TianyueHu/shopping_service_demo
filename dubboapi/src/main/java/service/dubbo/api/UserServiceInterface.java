@@ -21,4 +21,6 @@ public interface UserServiceInterface {
     public User getUser(String uid);
 
     public String checkAndDeductBalance(String uid, long balance);
+
+    public boolean deleteUser(String uid);
 }

@@ -2,9 +2,12 @@ package service.dubbo.api.bean;
 
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 4567896789L;
 
     private String uid;
 

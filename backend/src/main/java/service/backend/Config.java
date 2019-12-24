@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Import;
  */
 
 @Configuration
-//@Import(RMConfig.class)
+@Import(RMConfig.class)
 public class Config {
 }

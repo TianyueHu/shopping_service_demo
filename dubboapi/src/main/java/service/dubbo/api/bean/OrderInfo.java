@@ -1,5 +1,6 @@
 package service.dubbo.api.bean;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -7,7 +8,9 @@ import java.sql.Timestamp;
  * @date 2019-10-02
  */
 
-public class OrderInfo {
+public class OrderInfo implements Serializable {
+
+    private static final long serialVersionUID = 4567899789L;
 
     private String oid;
 

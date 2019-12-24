@@ -13,14 +13,23 @@ import java.util.List;
  * @date 2019-10-02
  */
 
-@Service(version = "1.0.0")
+@Service
 public class ProductService implements ProductServiceInterface {
 
     @Autowired
     private ProductDao dao;
 
-    public Product getProduct(String pid){
-        return dao.findByPid(pid);
+    @Override
+    @Transactional
+    public service.dubbo.api.bean.Product getProduct(String pid){
+        Product product = dao.findByPid(pid);
+        return new service.dubbo.api.bean.Product(
+                product.getPid(),
+                product.getpName(),
+                product.getDescription(),
+                product.getUnitPrice(),
+                product.getInventory(),
+                product.getUpdateTimestamp());
     }
 
     public Product updateProduct(Product product){
@@ -69,5 +78,16 @@ public class ProductService implements ProductServiceInterface {
         }
 
         return true;
+    }
+
+    @Override
+    public String newProduct(service.dubbo.api.bean.Product product) {
+        Product product1 = new Product();
+        product1.setDescription(product.getDescription());
+        product1.setInventory(product.getInventory());
+        product1.setpName(product.getpName());
+        product1.setUnitPrice(product.getUnitPrice());
+        product1.setUpdateTimestamp(product.getUpdateTimestamp());
+        return dao.save(product1).getPid();
     }
 }
